@@ -62,8 +62,6 @@ class CategoryController extends Admin
     {
 
         $categories = Category::getCategories()->toArray();
-
-//        xx(Nested::nested($categories));
         $this->viewSimple->categories = Recursion::recursion($categories);
         return $this->viewSimple->render('category/list');
     }

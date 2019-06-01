@@ -94,7 +94,7 @@ class BlogController extends Admin
                 mkdir('upload/' . $month, 0777);
             }
             $path = 'upload/' . $month . '/' . date('h-i-s') . '-' . $this->request->getUploadedFiles('avatar')[0]->getName();
-            $upload = $this->request->getUploadedFiles('avatar')[0]->moveTo($path);
+            $this->request->getUploadedFiles('avatar')[0]->moveTo($path);
             $request['avatar'] = $path;
         } else {
             $request['avatar'] = $request['oldavatar'];

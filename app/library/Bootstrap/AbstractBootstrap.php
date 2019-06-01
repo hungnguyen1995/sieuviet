@@ -424,7 +424,9 @@ abstract class AbstractBootstrap
                      * Register the PHP extension, to be able to use PHP
                      * functions in Volt
                      */
-
+//                    $volt->getCompiler()->addFunction('showCategories', function ($resolvedArgs) {
+//                        return 'Website\Services\Recursion::showCategories(' . $resolvedArgs . ')';
+//                    });
                     $volt->getCompiler()->addExtension(new Php());
                     return $volt;
                 },

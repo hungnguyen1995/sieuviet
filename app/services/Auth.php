@@ -5,7 +5,7 @@ namespace Website\Services;
 class Auth extends \Phalcon\Di\Injectable
 {
 
-    // Add vào Ịnectable
+    // Add vào Injectable
     public function check($name = 'auth')
     {
         return $this->session->has($name);

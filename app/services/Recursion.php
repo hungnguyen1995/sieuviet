@@ -14,22 +14,25 @@ class Recursion
         $result = array();
         foreach ($arrays as $cate) {
             $cate['level'] = $level;
+            // nếu là cate con
             if ($cate['parent'] == $parent) {
-                $children = static::recursion($arrays, $cate['id'], $level + 1);
+                // loop cate con
+                $children = self::recursion($arrays, $cate['id'], $level + 1);
                 $result[$cate['id']] = $cate;
-                // nếu tồn tại cate con nhỏ nhất
+                // nếu tồn tại cate con nhỏ nhất lấy ra
                 if ($children) {
                     foreach ($children as $c) {
                         $result[$c['id']] = $c;
                     }
                 }
-
             }
         }
         return $result;
     }
-
-   public static function  showCategories($categories, $parent_id = 0, $char = '')
+    /*
+     * Đệ quy hiện trong thẻ <select> trong volt
+     */
+    public static function  showCategories($categories, $parent_id = 0, $char = '')
     {
         foreach ($categories as $key => $item)
         {
@@ -44,7 +47,7 @@ class Recursion
                 unset($categories[$key]);
 
                 // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
-                showCategories($categories, $item['id'], $char.'|---');
+                self::showCategories($categories, $item['id'], $char.'|---');
             }
         }
     }

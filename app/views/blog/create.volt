@@ -58,6 +58,7 @@
 									 		{% for index, category in categories %}
 												<option  value="{{ category.id}}">{{ category.name}}</option>		
 									 		{% endfor %}
+											{% showCategories(categories) %}
 									 	</select>
 									</div>
 								</div>
